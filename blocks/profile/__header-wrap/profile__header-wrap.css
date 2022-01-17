@@ -1,0 +1,13 @@
+.profile__header-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 16px;
+    
+}
+
+@media screen and (max-width: 580px) {
+    .profile__header-wrap {
+        margin-bottom: 14px;
+    }
+}

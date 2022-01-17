@@ -1,0 +1,16 @@
+.edit-form__submit-button {
+    border: none; 
+    outline: none;
+    width: 358px;
+    height: 50px;
+    border-radius: 2px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

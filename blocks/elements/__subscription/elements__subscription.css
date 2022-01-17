@@ -1,0 +1,9 @@
+.elements__subscription {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    width: 246px;
+    justify-content: space-between;
+    margin: auto;
+}
