@@ -83,14 +83,16 @@
         </ul>
       </section>
 
-      <section class="edit-form edit-form_display_hidden">
-        <div class="edit-form__overlay">
-          <form class="edit-form__rectangle">
-            <h2 class="edit-form__header">Редактировать профиль</h2>
-            <input type="text" class="edit-form__field-one" placeholder="Жак-Ив Кусто"></input>
-            <input type="text" class="edit-form__field-two" placeholder="Исследователь океана"></input>
-            <button class="edit-form__submit-button">Сохранить</button>
-            <img class="edit-form__close-icon" src="images/Close Icon.svg" alt="закрыть">
+      <section class="popup">
+        <div class="popup__overlay">
+          <form class="popup__container">
+            <h2 class="popup__header">Редактировать профиль</h2>
+            <input type="text" class="popup__field-one" placeholder=""></input>
+            <input type="text" class="popup__field-two" placeholder=""></input>
+            <button class="popup__submit-button">Сохранить</button>
+            <button class="popup__close-icon">
+              <img src="images/Close Icon.svg" alt="закрыть">
+            </button>
           </form>
         </div>
       </section>
@@ -103,5 +105,6 @@
       </footer>
 
   </div>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

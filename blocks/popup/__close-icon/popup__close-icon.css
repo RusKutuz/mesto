@@ -1,8 +1,10 @@
-.edit-form__close-icon {
+.popup__close-icon {
     width: 32px;
     height: 32px;
     background-color: #000000;
     position: absolute;
     top: -40px;
     right: -40px;
+    margin: 0;
+    padding: 0;
 }
