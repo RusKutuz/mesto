@@ -20,6 +20,7 @@
     .elements__grid {
         grid-template-columns: repeat(1, auto);
         justify-content: center;
+        column-gap: 0px;
         
     }
 }

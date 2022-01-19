@@ -2,4 +2,9 @@
     width: 22px;
     height: 19px;
     object-fit: cover;
+    cursor: pointer;
+}
+
+.elements__like:hover {
+    opacity: .5;
 }

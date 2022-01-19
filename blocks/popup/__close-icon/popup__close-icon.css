@@ -7,4 +7,20 @@
     right: -40px;
     margin: 0;
     padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 580px) {
+    .popup__close-icon {
+        width: 20px;
+        height: 20px;
+        top: -26px;
+        right: 0px;
+    }
+}
+
+.popup__close-icon:hover {
+    opacity: .6;
 }

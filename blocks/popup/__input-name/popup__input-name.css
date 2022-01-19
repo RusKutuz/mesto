@@ -1,4 +1,4 @@
-.popup__field-one {
+.popup__input-name {
     border: none; 
     outline: none;
     font-size: 14px;
@@ -10,3 +10,4 @@
     margin: 0 0 30px;
     width: 100%;
 }
+
