@@ -4,7 +4,6 @@
     font-weight: 500;
     padding: 0;
     margin: 0;
-    margin-right: 18px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -16,7 +15,6 @@
     .profile__header {
         font-size: 27px;
         line-height: 32px;
-        margin-right: 10px;
         max-width: 189px;
     }
 }
