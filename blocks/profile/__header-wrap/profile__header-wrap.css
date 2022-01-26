@@ -1,5 +1,6 @@
 .profile__header-wrap {
-    display: block;
+    display: flex;
+    flex-direction: row;
     position: relative;
     margin-bottom: 8px;
     

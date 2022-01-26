@@ -88,11 +88,11 @@
       </footer>
 
       <div class="popup">
-        <div class="popup__form">
-          <form class="popup__container" name="redact-form">
-            <h2 class="popup__header">Редактировать профиль</h2>
-            <input type="text" class="popup__input popup__input_name" name="name">
-            <input type="text" class="popup__input popup__input_profession" name="profession">
+        <div class="popup__container">
+          <h2 class="popup__header">Редактировать профиль</h2>
+          <form class="popup__form" name="redact-form">
+            <input type="text" class="popup__input popup__input_type_name" name="name" placeholder="Имя" required="required">
+            <input type="text" class="popup__input popup__input_type_profession" name="profession" placeholder="О себе" required="required">
             <button type="submit" class="popup__submit-button">Сохранить</button>
           </form>
           <button type="button" class="popup__close-icon"></button>

@@ -9,35 +9,18 @@ const popupInputFieldProfession = popup.querySelector('.popup__input_profession'
 const profileHeader = document.querySelector('.profile__header');
 const profileProfession = document.querySelector('.profile__subscription');
 
-const body = document.querySelector('.body');
-
-/* отключить скролл страницы */
-function stopScroll() {
-    body.classList.add('body_scroll-off');
-}
-
-/* включить скролл страницы */
-function startScroll() {
-    body.classList.remove('body_scroll-off');
-}
 
 /* открыть попап и заполнить инпуты значениями со страницы */
 function openPopup() {
     popup.classList.add('popup_opened');
     popupInputFieldName.value = profileHeader.textContent;
     popupInputFieldProfession.value = profileProfession.textContent;
-    stopScroll();
 }
-
-profileInfoEditButton.addEventListener('click', openPopup);
 
 /* закрыть попап */
 function closePopup() {
     popup.classList.remove('popup_opened');
-    startScroll();
 }
-
-popupCloseButton.addEventListener('click', closePopup);
 
 /* закрыть попап и заполнить данные на странице значениями введенными в форме */
 function submitForm(evt) {
@@ -47,6 +30,8 @@ function submitForm(evt) {
     closePopup();
 }
 
+profileInfoEditButton.addEventListener('click', openPopup);
+popupCloseButton.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', submitForm);
 
 /* 
