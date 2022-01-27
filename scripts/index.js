@@ -1,14 +1,12 @@
 const profileInfoEditButton = document.querySelector('.profile__edit-button');
-
-const popup = document.querySelector('.popup');
-const popupForm = document.querySelector('.popup__container');
-const popupCloseButton = popup.querySelector('.popup__close-icon');
-const popupInputFieldName = popup.querySelector('.popup__input_name');
-const popupInputFieldProfession = popup.querySelector('.popup__input_profession');
-
 const profileHeader = document.querySelector('.profile__header');
 const profileProfession = document.querySelector('.profile__subscription');
 
+const popup = document.querySelector('.popup');
+const popupForm = document.querySelector('.popup__form');
+const popupCloseButton = popup.querySelector('.popup__close-icon');
+const popupInputFieldName = popup.querySelector('.popup__input_type_name');
+const popupInputFieldProfession = popup.querySelector('.popup__input_type_profession');
 
 /* открыть попап и заполнить инпуты значениями со страницы */
 function openPopup() {
