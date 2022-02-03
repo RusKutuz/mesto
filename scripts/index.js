@@ -161,6 +161,7 @@ function deleteCard (evt) {
 function openPopupPicture(evt) {
   openPopup(popupPicture);
   popupImage.src = evt.target.src;
+  popupImage.alt = evt.target.alt;
   popupDescription.innerText = evt.target.alt;
 }
 
