@@ -96,7 +96,7 @@ function createCard(name, link) {
   const picture = newCard.querySelector('.elements__picture');
   picture.src = link;
   picture.alt = name;
-  newCard.querySelector('.elements__name').innerText = name;
+  newCard.querySelector('.elements__name').textContent = name;
   newCard.querySelector('.elements__trash').addEventListener('click', deleteCard);
   newCard.querySelector('.elements__like').addEventListener('click', likeActive);
   picture.addEventListener('click', openPopupPicture);
@@ -128,7 +128,7 @@ function openPopupPicture(evt) {
   openPopup(popupPicture);
   popupImage.src = evt.target.src;
   popupImage.alt = evt.target.alt;
-  popupDescription.innerText = evt.target.alt;
+  popupDescription.textContent = evt.target.alt;
 }
 
 /* закрасить сердечко Лайк черным при нажатии и обратно */
