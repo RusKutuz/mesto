@@ -63,14 +63,11 @@ function closePopup(pop) {
   pop.classList.remove('popup_opened');
 }
 
-/* закрыть попап добавления карточки */
-function closePopupAddCard() {
-  closePopup(popupAddCard);
-}
-
-/* закрыть попап редактирования профиля */
-function closePopupEditProfile() {
-  closePopup(popupEditProfile);
+/* закрыть попап по клику за границами попапа*/
+function closePopupBorderOutside(event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
 }
 
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
@@ -94,61 +91,30 @@ function openPopupAddCard() {
 }
 
 /* создать новую карточку */
-let newCard;
-function cloneCardFromTemplate() {
-  newCard = templateCard.cloneNode(true);
-  return newCard;
-}
-
-/* добавить карточку на страницу*/
-function addCard(item) {
-  cloneCardFromTemplate();
+function createCard(name, link) { 
+  const newCard = templateCard.cloneNode(true);
   const picture = newCard.querySelector('.elements__picture');
-  picture.src = item.link;
-  picture.alt = item.name;
-  newCard.querySelector('.elements__name').innerText = item.name;
+  picture.src = link;
+  picture.alt = name;
+  newCard.querySelector('.elements__name').innerText = name;
   newCard.querySelector('.elements__trash').addEventListener('click', deleteCard);
   newCard.querySelector('.elements__like').addEventListener('click', likeActive);
   picture.addEventListener('click', openPopupPicture);
-  cardsList.prepend(newCard);
+  return newCard; //возвращается созданная карточка 
+  } 
+
+/* добавить карточку в контейнер*/
+function addCard(container, cardElement) {
+  container.prepend(cardElement);
 }
 
-initialCards.forEach(addCard);
+/* добавить карточки по умолчанию*/
+initialCards.forEach((item) => addCard(cardsList, createCard(item.name, item.link)));
 
+/* добавить карточку по сабмиту формы */
 function submitAddCardForm(evt) {
   evt.preventDefault();
-  let item = {};
-  item.link = popupInputLink.value;
-  item.name = popupInputPlace.value;
-  addCard(item);
-  closePopup(popupAddCard);
-}
-
-/* добавить карточку на страницу*/
-function addCard2(el) {
-  cloneCardFromTemplate();
-  const picture = newCard.querySelector('.elements__picture');
-  picture.src = el.link;
-  picture.alt = el.name;
-  picture.addEventListener('click', openPopupPicture);
-  newCard.querySelector('.elements__name').innerText = el.name;
-  newCard.querySelector('.elements__trash').addEventListener('click', deleteCard);
-  newCard.querySelector('.elements__like').addEventListener('click', likeActive);
-  cardsList.prepend(newCard);
-}
-
-/* добавить карточку на страницу по сабмиту формы и навесить обработчик события Лайк */
-function submitAddCardForm2(evt) {
-  evt.preventDefault();
-  cloneCardFromTemplate();
-  let picture = newCard.querySelector('.elements__picture');
-  picture.src = popupInputLink.value;
-  picture.alt = popupInputPlace.value;
-  picture.addEventListener('click', openPopupPicture);
-  newCard.querySelector('.elements__name').innerText = popupInputPlace.value;
-  newCard.querySelector('.elements__like').addEventListener('click', likeActive);
-  newCard.querySelector('.elements__trash').addEventListener('click', deleteCard);
-  cardsList.prepend(newCard);
+  addCard(cardsList, createCard(popupInputPlace.value, popupInputLink.value));
   closePopup(popupAddCard);
 }
 
@@ -165,51 +131,22 @@ function openPopupPicture(evt) {
   popupDescription.innerText = evt.target.alt;
 }
 
-/* закрыть попап с картинкой */
-function closePopupPicture() {
-  closePopup(popupPicture);
-}
-
 /* закрасить сердечко Лайк черным при нажатии и обратно */
 function likeActive(event) {
   event.target.classList.toggle('elements__like_active');
 }
 
-/* добавить на страницу карточки по умолчанию */
-//initialCards.forEach(addCard);
-
-
-
 
 profileInfoEditButton.addEventListener('click', openPopupEditProfile);
-popupEditProfileCloseButton.addEventListener('click', closePopupEditProfile);
-popupPictureCloseButton.addEventListener('click', closePopupPicture);
+popupEditProfileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
+popupPictureCloseButton.addEventListener('click', () => closePopup(popupPicture));
 popupForm.addEventListener('submit', submitForm);
 addCardButton.addEventListener('click', openPopupAddCard);
-popupAddCardCloseButton.addEventListener('click', closePopupAddCard);
+popupAddCardCloseButton.addEventListener('click', () => closePopup(popupAddCard));
 popupAddCardForm.addEventListener('submit', submitAddCardForm);
+popupEditProfile.addEventListener('mousedown', closePopupBorderOutside);
+popupAddCard.addEventListener('mousedown', closePopupBorderOutside);
+popupPicture.addEventListener('mousedown', closePopupBorderOutside);
 
 
 
-
-
-
-
-
-
-
-
-
-
-/* 
-Сейчас закрытие вне окошка работает не совсем корректно - если щелкнуть в пределах окна, а отпустить мышку за пределами, 
-то окно закроется, хотя не должно. Из-за этого могут возникнуть проблемы с выделением контента внутри инпутов - если 
-при выделении вывести курсор за пределы окна попапа, то окошко свернется.
-
-const popupOverlay = popup.querySelector('.popup__overlay');
-popupOverlay.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        popup.classList.remove('popup_opened');
-    }
-});
-*/
