@@ -52,6 +52,7 @@ const popupImage = popupPicture.querySelector('.popup__image');
 const popupDescription = popupPicture.querySelector('.popup__description');
 const popupPictureCloseButton = popupPicture.querySelector('.popup__close-icon');
 
+const popups = document.querySelectorAll('.popup');
 
 /* открыть попап */
 function openPopup(pop) {
@@ -63,12 +64,6 @@ function closePopup(pop) {
   pop.classList.remove('popup_opened');
 }
 
-/* закрыть попап по клику за границами попапа*/
-function closePopupBorderOutside(event) {
-  if (event.target === event.currentTarget) {
-    closePopup(event.target);
-  }
-}
 
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
 function openPopupEditProfile() {
@@ -136,6 +131,22 @@ function likeActive(event) {
   event.target.classList.toggle('elements__like_active');
 }
 
+/* закрыть попап по клику за границами попапа*/
+function closePopupBorderOutside(event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
+}
+
+/* закрыть попап по клику на кнопку Esc*/
+function closePopupOnButtonEsc(event) {
+  if (event.keyCode == 27) {
+    popups.forEach((popup) => {
+    closePopup(popup);
+    });
+  }
+}
+
 
 profileInfoEditButton.addEventListener('click', openPopupEditProfile);
 popupEditProfileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
@@ -147,6 +158,8 @@ popupAddCardForm.addEventListener('submit', submitAddCardForm);
 popupEditProfile.addEventListener('mousedown', closePopupBorderOutside);
 popupAddCard.addEventListener('mousedown', closePopupBorderOutside);
 popupPicture.addEventListener('mousedown', closePopupBorderOutside);
+document.addEventListener('keydown', closePopupOnButtonEsc);
+
 
 
 

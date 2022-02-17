@@ -9,3 +9,9 @@
         align-items: center;
     }
 }
+
+@media screen and (max-width: 680px) {
+    .profile__info {
+        max-width: 250px;
+    }
+}
