@@ -54,14 +54,24 @@ const popupPictureCloseButton = popupPicture.querySelector('.popup__close-icon')
 
 const popups = document.querySelectorAll('.popup');
 
+function addEventListenerEscape() {
+  document.addEventListener('keydown', closePopupOnButtonEsc);
+}
+
+function removeEventListenerEscape() {
+  document.removeEventListener('keydown', closePopupOnButtonEsc);
+}
+
 /* открыть попап */
 function openPopup(pop) {
   pop.classList.add('popup_opened');
+  addEventListenerEscape();
 }
 
 /* закрыть попап */
 function closePopup(pop) {
   pop.classList.remove('popup_opened');
+  removeEventListenerEscape();
 }
 
 
@@ -158,7 +168,7 @@ popupAddCardForm.addEventListener('submit', submitAddCardForm);
 popupEditProfile.addEventListener('mousedown', closePopupBorderOutside);
 popupAddCard.addEventListener('mousedown', closePopupBorderOutside);
 popupPicture.addEventListener('mousedown', closePopupBorderOutside);
-document.addEventListener('keydown', closePopupOnButtonEsc);
+
 
 
 

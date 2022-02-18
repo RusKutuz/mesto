@@ -62,6 +62,7 @@ function enableValidation({ formSelector, inputSelector, submitButtonSelector, .
         const inputElements = formElement.querySelectorAll(inputSelector);
         const submitButton = formElement.querySelector(submitButtonSelector);
         inputValidation(rest, formElement, inputElements, submitButton);
+        toggleButtonState(rest, formElement, submitButton);
     });
 }
 
