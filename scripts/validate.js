@@ -1,5 +1,3 @@
-
-
 /*Активировать кнопку отправки формы*/
 function enableSubmitButton({inactiveButtonClass}, submitButton) {
     submitButton.classList.remove(inactiveButtonClass);
@@ -55,10 +53,18 @@ function inputValidation(rest, formElement, inputElements, submitButton) {
     });
 }
 
+/*Отключить стандартный обработчик submit*/
+function preventDefaultSubmit(formElement) {
+    formElement.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+    });
+}
+
 /*Валидация всех форм*/
 function enableValidation({ formSelector, inputSelector, submitButtonSelector, ...rest }) {
     const formElements = document.querySelectorAll(formSelector);
     formElements.forEach((formElement) => {
+        preventDefaultSubmit(formElement);
         const inputElements = formElement.querySelectorAll(inputSelector);
         const submitButton = formElement.querySelector(submitButtonSelector);
         inputValidation(rest, formElement, inputElements, submitButton);

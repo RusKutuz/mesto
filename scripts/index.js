@@ -30,7 +30,7 @@ const profileHeader = document.querySelector('.profile__header');
 const profileProfession = document.querySelector('.profile__subscription');
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const popupForm = popupEditProfile.querySelector('.popup__form');
+const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 const popupEditProfileCloseButton = popupEditProfile.querySelector('.popup__close-icon');
 const popupInputFieldName = popupEditProfile.querySelector('.popup__input_type_name');
 const popupInputFieldProfession = popupEditProfile.querySelector('.popup__input_type_profession');
@@ -52,28 +52,26 @@ const popupImage = popupPicture.querySelector('.popup__image');
 const popupDescription = popupPicture.querySelector('.popup__description');
 const popupPictureCloseButton = popupPicture.querySelector('.popup__close-icon');
 
-const popups = document.querySelectorAll('.popup');
 
-function addEventListenerEscape() {
-  document.addEventListener('keydown', closePopupOnButtonEsc);
-}
-
-function removeEventListenerEscape() {
-  document.removeEventListener('keydown', closePopupOnButtonEsc);
-}
 
 /* открыть попап */
 function openPopup(pop) {
   pop.classList.add('popup_opened');
-  addEventListenerEscape();
+  pop.addEventListener('keydown', (event) => {closePopupOnButtonEsc(event, pop);});
 }
 
 /* закрыть попап */
 function closePopup(pop) {
   pop.classList.remove('popup_opened');
-  removeEventListenerEscape();
+  pop.removeEventListener('keydown', closePopupOnButtonEsc);
 }
 
+/* закрыть попап по клику на кнопку Esc*/
+const closePopupOnButtonEsc = function(event, pop) {
+  if (event.key == "Escape") {
+    closePopup(pop);
+  }
+};
 
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
 function openPopupEditProfile() {
@@ -148,27 +146,19 @@ function closePopupBorderOutside(event) {
   }
 }
 
-/* закрыть попап по клику на кнопку Esc*/
-function closePopupOnButtonEsc(event) {
-  if (event.keyCode == 27) {
-    popups.forEach((popup) => {
-    closePopup(popup);
-    });
-  }
-}
+
 
 
 profileInfoEditButton.addEventListener('click', openPopupEditProfile);
 popupEditProfileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
 popupPictureCloseButton.addEventListener('click', () => closePopup(popupPicture));
-popupForm.addEventListener('submit', submitForm);
+popupEditProfileForm.addEventListener('submit', submitForm);
 addCardButton.addEventListener('click', openPopupAddCard);
 popupAddCardCloseButton.addEventListener('click', () => closePopup(popupAddCard));
 popupAddCardForm.addEventListener('submit', submitAddCardForm);
 popupEditProfile.addEventListener('mousedown', closePopupBorderOutside);
 popupAddCard.addEventListener('mousedown', closePopupBorderOutside);
 popupPicture.addEventListener('mousedown', closePopupBorderOutside);
-
 
 
 
