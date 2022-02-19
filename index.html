@@ -58,7 +58,7 @@
       </footer>
 
       <!-- Попап редактирования профиля -->
-      <div class="popup popup_type_edit-profile">
+      <div class="popup popup_type_edit-profile" tabindex="0">
         <div class="popup__container">
           <h2 class="popup__header">Редактировать профиль</h2>
           <form class="popup__form popup__form_type_redact-form" name="redact-form" novalidate>
@@ -73,7 +73,7 @@
       </div>
 
       <!-- Попап добавления карточки -->
-      <div class="popup popup_type_add-card">
+      <div class="popup popup_type_add-card" tabindex="0">
         <div class="popup__container">
           <h2 class="popup__header">Новое место</h2>
           <form class="popup__form popup__form_type_add-card" name="add-card" novalidate>
@@ -88,7 +88,7 @@
       </div>
 
       <!-- Попап с увеличенной картинкой -->
-      <div class="popup popup_type_picture">
+      <div class="popup popup_type_picture"  tabindex="0">
         <div class="popup__box">
           <img class="popup__image">
           <p class="popup__description"></p>
@@ -97,7 +97,7 @@
       </div>
 
   </div>
-  <script src="/scripts/index.js"></script>
-  <script src="/scripts/validate.js"></script>
+  <script src="/scripts/validate.js" type="module"></script>
+  <script src="/scripts/index.js" type="module"></script>
 </body>
 </html>

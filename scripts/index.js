@@ -52,26 +52,18 @@ const popupImage = popupPicture.querySelector('.popup__image');
 const popupDescription = popupPicture.querySelector('.popup__description');
 const popupPictureCloseButton = popupPicture.querySelector('.popup__close-icon');
 
+const popups = document.querySelectorAll('.popup'); //Эта переменная используется для поиска открытого попапа в слушателе клавиатуры. Ответ куратора Наталья Дружинина: Все остальные слушатели на попап, а этот на документ
 
 
 /* открыть попап */
 function openPopup(pop) {
   pop.classList.add('popup_opened');
-  pop.addEventListener('keydown', (event) => {closePopupOnButtonEsc(event, pop);});
 }
 
 /* закрыть попап */
 function closePopup(pop) {
   pop.classList.remove('popup_opened');
-  pop.removeEventListener('keydown', closePopupOnButtonEsc);
 }
-
-/* закрыть попап по клику на кнопку Esc*/
-const closePopupOnButtonEsc = function(event, pop) {
-  if (event.key == "Escape") {
-    closePopup(pop);
-  }
-};
 
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
 function openPopupEditProfile() {
@@ -146,7 +138,17 @@ function closePopupBorderOutside(event) {
   }
 }
 
-
+/* закрыть попап по клику на кнопку Esc*/
+function closePopupOnButtonEsc(event) {
+  if (event.key == "Escape") {
+    popups.forEach((pop) => {
+      if (pop.classList.contains('popup_opened')) {
+        closePopup(pop);
+      }
+    });
+    
+  }
+}
 
 
 profileInfoEditButton.addEventListener('click', openPopupEditProfile);
@@ -159,7 +161,7 @@ popupAddCardForm.addEventListener('submit', submitAddCardForm);
 popupEditProfile.addEventListener('mousedown', closePopupBorderOutside);
 popupAddCard.addEventListener('mousedown', closePopupBorderOutside);
 popupPicture.addEventListener('mousedown', closePopupBorderOutside);
-
+document.addEventListener('keydown', closePopupOnButtonEsc); //Ответ куратора Наталья Дружинина: Все остальные слушатели на попап, а этот на документ
 
 
 
