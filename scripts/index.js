@@ -54,6 +54,21 @@ const popupPictureCloseButton = popupPicture.querySelector('.popup__close-icon')
 
 const popups = document.querySelectorAll('.popup'); //Эта переменная используется для поиска открытого попапа в слушателе клавиатуры. Ответ куратора Наталья Дружинина: Все остальные слушатели на попап, а этот на документ
 
+/* очистить форму */
+function formReset(pop) {
+  const form = pop.querySelector('.popup__form');
+  const inputs = pop.querySelectorAll('.popup__input');
+  const errors = pop.querySelectorAll('.popup__input-error');
+  if (form) {
+    form.reset();}
+  errors.forEach(error => error.textContent = "");
+  inputs.forEach(input => {
+    if (input.classList.contains('popup__input_type_error')) {
+      input.classList.remove('popup__input_type_error');
+    }
+  });
+  
+}
 
 /* открыть попап */
 function openPopup(pop) {
@@ -63,6 +78,7 @@ function openPopup(pop) {
 /* закрыть попап */
 function closePopup(pop) {
   pop.classList.remove('popup_opened');
+  formReset(pop);
 }
 
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
