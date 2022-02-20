@@ -55,30 +55,48 @@ const popupPictureCloseButton = popupPicture.querySelector('.popup__close-icon')
 const popups = document.querySelectorAll('.popup'); //Эта переменная используется для поиска открытого попапа в слушателе клавиатуры. Ответ куратора Наталья Дружинина: Все остальные слушатели на попап, а этот на документ
 
 /* очистить форму */
-function formReset(pop) {
+function resetPopupForm(pop) {
   const form = pop.querySelector('.popup__form');
-  const inputs = pop.querySelectorAll('.popup__input');
-  const errors = pop.querySelectorAll('.popup__input-error');
   if (form) {
-    form.reset();}
-  errors.forEach(error => error.textContent = "");
-  inputs.forEach(input => {
-    if (input.classList.contains('popup__input_type_error')) {
-      input.classList.remove('popup__input_type_error');
+    const inputs = pop.querySelectorAll('.popup__input');
+    const errors = pop.querySelectorAll('.popup__input-error');
+    const submitButton = pop.querySelector('.popup__submit-button');
+    form.reset();
+    errors.forEach(error => error.textContent = "");
+    inputs.forEach(input => {
+      if (input.classList.contains('popup__input_type_error')) {
+        input.classList.remove('popup__input_type_error');
+      }
+    });
+    if (!submitButton.classList.contains('popup__submit-button_disabled')) {
+      submitButton.classList.add('popup__submit-button_disabled');
     }
-  });
-  
+  }
+}
+
+/* закрыть попап по клику на кнопку Esc*/
+function closePopupOnButtonEsc(event) {
+  if (event.key == "Escape") {
+    popups.forEach((pop) => {
+      if (pop.classList.contains('popup_opened')) {
+        closePopup(pop);
+      }
+    });
+    
+  }
 }
 
 /* открыть попап */
 function openPopup(pop) {
+  resetPopupForm(pop);
   pop.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupOnButtonEsc);
 }
 
 /* закрыть попап */
 function closePopup(pop) {
   pop.classList.remove('popup_opened');
-  formReset(pop);
+  document.removeEventListener('keydown', closePopupOnButtonEsc);
 }
 
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
@@ -154,19 +172,6 @@ function closePopupBorderOutside(event) {
   }
 }
 
-/* закрыть попап по клику на кнопку Esc*/
-function closePopupOnButtonEsc(event) {
-  if (event.key == "Escape") {
-    popups.forEach((pop) => {
-      if (pop.classList.contains('popup_opened')) {
-        closePopup(pop);
-      }
-    });
-    
-  }
-}
-
-
 profileInfoEditButton.addEventListener('click', openPopupEditProfile);
 popupEditProfileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
 popupPictureCloseButton.addEventListener('click', () => closePopup(popupPicture));
@@ -177,7 +182,6 @@ popupAddCardForm.addEventListener('submit', submitAddCardForm);
 popupEditProfile.addEventListener('mousedown', closePopupBorderOutside);
 popupAddCard.addEventListener('mousedown', closePopupBorderOutside);
 popupPicture.addEventListener('mousedown', closePopupBorderOutside);
-document.addEventListener('keydown', closePopupOnButtonEsc); //Ответ куратора Наталья Дружинина: Все остальные слушатели на попап, а этот на документ
 
 
 
