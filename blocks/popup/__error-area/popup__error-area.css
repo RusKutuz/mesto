@@ -1,4 +1,4 @@
 .popup__error-area {
-    position: relative;
     min-height: 30px;
+    margin: 5px 0 0;
 }
