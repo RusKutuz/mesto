@@ -1,10 +1,11 @@
-/*Привет, Сергей. 
-По согласованию с куратором Натальей Дружининой я увеличил расстояние между инпутами на 5 пикселей, 
-так как в вёрстке не предусмотрено что сообщение об ошибке может занимать две строки. 
-Теперь размер формы не скачет и применение абсолютного позиционирования не понадобилось. 
-Наталья написала что абсолютное позиционирование лучше не применять к текстовым полям
-т.к. в случае если текст ошибки будет занимать 3 строки, то она перекроет нижний элемент*/
-
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_visible'
+};
 
 /*Активировать кнопку отправки формы*/
 function enableSubmitButton({inactiveButtonClass}, submitButton) {
@@ -81,11 +82,4 @@ function enableValidation({ formSelector, inputSelector, submitButtonSelector, .
 }
 
 
-enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit-button',
-    inactiveButtonClass: 'popup__submit-button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_visible'
-  }); 
+enableValidation(validationConfig); 
