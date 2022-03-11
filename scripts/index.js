@@ -116,12 +116,13 @@ function submitAddCardForm(evt) {
   evt.preventDefault();
   const card = new Card ({name: popupInputPlace.value, link: popupInputLink.value}, ".template-card");
   const cardElement = card.generateCard();
+  console.log(cardElement);
   addCard(cardsList, cardElement);
   closePopup(popupAddCard);
 }
 
   
-  /* закрыть попап по клику за границами попапа*/
+/* закрыть попап по клику за границами попапа*/
 function closePopupBorderOutside(event) {
   if (event.target === event.currentTarget) {
     closePopup(event.target);
