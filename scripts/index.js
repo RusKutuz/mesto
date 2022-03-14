@@ -21,72 +21,55 @@ import {
   profileProfession,
   popupInputPlace,
   popupInputLink
-} from './Data.js';
+} from './data.js';
+
+
+/* создать новую карточку */
+function createNewCard(data, template) {
+  const card = new Card(data, template, openPopup);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+/* добавить начальные карточки в разметку*/
+initialCards.forEach((data) => {
+  const cardElement = createNewCard(data, '.template-card');
+  document.querySelector('.elements__grid').prepend(cardElement);
+});
 
 
 
+/* открыть попап */
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupOnButtonEsc);
+}
 
-/* валидировать формы */
-const editProfileFormValidation = new FormValidator(validationConfig, popupEditProfileForm);
-const addCardFormValidation = new FormValidator(validationConfig, popupAddCardForm);
-editProfileFormValidation.enableValidation();
-addCardFormValidation.enableValidation();
+/* закрыть попап */
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupOnButtonEsc);
+}
 
 /* закрыть попап по клику на кнопку Esc*/
 export const closePopupOnButtonEsc = function(event) {
   if (event.key == "Escape") {
-    popups.forEach((pop) => {
-      if (pop.classList.contains('popup_opened')) {
-        closePopup(pop);
+    popups.forEach((popup) => {
+      if (popup.classList.contains('popup_opened')) {
+        closePopup(popup);
       }
     });
     
   }
 };
 
-/* добавить карточки в разметку*/
-initialCards.forEach((data) => {
-  const card = new Card(data, '.template-card', openPopup);
-  const cardElement = card.generateCard();
-  document.querySelector('.elements__grid').prepend(cardElement);
-});
-
-/* очистить форму */
-function resetPopupForm(pop) {
-  const form = pop.querySelector('.popup__form');
-  if (form) {
-    const inputs = pop.querySelectorAll('.popup__input');
-    const errors = pop.querySelectorAll('.popup__input-error');
-    const submitButton = pop.querySelector('.popup__submit-button');
-    form.reset();
-    errors.forEach(error => error.textContent = "");
-    inputs.forEach(input => {
-      if (input.classList.contains('popup__input_type_error')) {
-          input.classList.remove('popup__input_type_error');
-      }
-    });
-    if (!submitButton.classList.contains('popup__submit-button_disabled')) {
-        submitButton.classList.add('popup__submit-button_disabled');
-    }
-  }
-}
- 
-/* открыть попап */
-function openPopup(pop) {
-  resetPopupForm(pop);
-  pop.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupOnButtonEsc);
-}
-
-/* закрыть попап */
-function closePopup(pop) {
-  pop.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupOnButtonEsc);
-}
-
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
 function openPopupEditProfile() {
   openPopup(popupEditProfile);
+  const editProfileFormValidation = new FormValidator(validationConfig, popupEditProfileForm);
+  editProfileFormValidation.enableValidation();
+  editProfileFormValidation.resetPopupForm();
+  editProfileFormValidation.toggleButtonState();
   popupInputFieldName.value = profileHeader.textContent;
   popupInputFieldProfession.value = profileProfession.textContent;
 }
@@ -102,6 +85,10 @@ function submitForm(evt) {
 /* открыть попап добавления карточки */
 function openPopupAddCard() {
   openPopup(popupAddCard);
+  const addCardFormValidation = new FormValidator(validationConfig, popupAddCardForm);
+  addCardFormValidation.enableValidation();
+  addCardFormValidation.resetPopupForm();
+  addCardFormValidation.toggleButtonState();
 }
 
 
@@ -114,13 +101,10 @@ function addCard(container, cardElement) {
 /* добавить карточку по сабмиту формы */
 function submitAddCardForm(evt) {
   evt.preventDefault();
-  const card = new Card ({name: popupInputPlace.value, link: popupInputLink.value}, ".template-card");
-  const cardElement = card.generateCard();
-  console.log(cardElement);
+  const cardElement = createNewCard({name: popupInputPlace.value, link: popupInputLink.value}, ".template-card");
   addCard(cardsList, cardElement);
   closePopup(popupAddCard);
 }
-
   
 /* закрыть попап по клику за границами попапа*/
 function closePopupBorderOutside(event) {
@@ -136,8 +120,6 @@ popupEditProfileForm.addEventListener('submit', submitForm);
 addCardButton.addEventListener('click', openPopupAddCard);
 popupAddCardCloseButton.addEventListener('click', () => closePopup(popupAddCard));
 popupAddCardForm.addEventListener('submit', submitAddCardForm);
-popupEditProfile.addEventListener('mousedown', closePopupBorderOutside);
-popupAddCard.addEventListener('mousedown', closePopupBorderOutside);
-popupPicture.addEventListener('mousedown', closePopupBorderOutside);
-
-
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', closePopupBorderOutside);
+});

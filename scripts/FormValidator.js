@@ -40,7 +40,7 @@ export class FormValidator {
     }
 
     /* Вкл/выкл кнопку Submit */
-    _toggleButtonState(submitButton) {
+    toggleButtonState(submitButton) {
         if (this._form.checkValidity()) {
             this._enableSubmitButton(submitButton);
         } else {
@@ -54,7 +54,7 @@ export class FormValidator {
             const inputErrorArea = this._form.querySelector(`.error-${inputElement.name}`);
             inputElement.addEventListener('input', () => {
                 this._toggleErrorVisibility(inputElement, inputErrorArea);
-                this._toggleButtonState(submitButton);
+                this.toggleButtonState(submitButton);
             });
         });
     }
@@ -65,6 +65,24 @@ export class FormValidator {
             evt.preventDefault();
         });
     }
+
+    
+    /* очистить форму */
+    resetPopupForm() {
+        const inputs = this._form.querySelectorAll('.popup__input');
+        const errors = this._form.querySelectorAll('.popup__input-error');
+        const submitButton = this._form.querySelector('.popup__submit-button');
+        this._form.reset();
+        errors.forEach(error => error.textContent = "");
+        inputs.forEach(input => {
+            if (input.classList.contains('popup__input_type_error')) {
+                input.classList.remove('popup__input_type_error');
+            }
+        });
+        if (!submitButton.classList.contains('popup__submit-button_disabled')) {
+            submitButton.classList.add('popup__submit-button_disabled');
+        }
+    }
     
 
     enableValidation() {
@@ -72,6 +90,6 @@ export class FormValidator {
         const inputElements = this._form.querySelectorAll(this._settings.inputSelector);
         const submitButton = this._form.querySelector(this._settings.submitButtonSelector);
         this._inputValidation(inputElements, submitButton);
-        this._toggleButtonState(submitButton);
+        this.toggleButtonState(submitButton);
     }
 }

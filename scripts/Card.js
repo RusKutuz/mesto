@@ -1,4 +1,4 @@
-import {popupPicture,popupDescription} from './data.js';
+import {popupPicture,popupDescription, popupImage} from './data.js';
 
 /* карточки */
 export class Card {
@@ -7,6 +7,7 @@ export class Card {
         this._link = data.link;
         this._templateSelector = templateSelector;
         this._openPopup = openPopup;
+
     }
     /* клонировать карточку из темплета */
     _getTemplate() {
@@ -35,7 +36,6 @@ export class Card {
     /* открыть попап с картинкой */
     _openPreviewPicture() {
         this._openPopup(popupPicture);
-        const popupImage = popupPicture.querySelector('.popup__image');
         popupImage.src = this._link;
         popupImage.alt = this._name;
         popupDescription.textContent = this._name;
