@@ -23,6 +23,13 @@ import {
   popupInputLink
 } from './data.js';
 
+/* валидировать форму редактирования профиля */
+const editProfileFormValidation = new FormValidator(validationConfig, popupEditProfileForm);
+editProfileFormValidation.enableValidation();
+
+/* валидировать форму добавления карточки */
+const addCardFormValidation = new FormValidator(validationConfig, popupAddCardForm);
+addCardFormValidation.enableValidation();
 
 /* создать новую карточку */
 function createNewCard(data, template) {
@@ -63,12 +70,11 @@ export const closePopupOnButtonEsc = function(event) {
   }
 };
 
+
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
 function openPopupEditProfile() {
   openPopup(popupEditProfile);
-  const editProfileFormValidation = new FormValidator(validationConfig, popupEditProfileForm);
-  editProfileFormValidation.enableValidation();
-  editProfileFormValidation.resetPopupForm();
+  editProfileFormValidation.resetForm();
   editProfileFormValidation.toggleButtonState();
   popupInputFieldName.value = profileHeader.textContent;
   popupInputFieldProfession.value = profileProfession.textContent;
@@ -85,9 +91,7 @@ function submitForm(evt) {
 /* открыть попап добавления карточки */
 function openPopupAddCard() {
   openPopup(popupAddCard);
-  const addCardFormValidation = new FormValidator(validationConfig, popupAddCardForm);
-  addCardFormValidation.enableValidation();
-  addCardFormValidation.resetPopupForm();
+  addCardFormValidation.resetForm();
   addCardFormValidation.toggleButtonState();
 }
 
