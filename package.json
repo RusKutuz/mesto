@@ -1,0 +1,38 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "Адаптивная вёрстка с применением медизапросов. Использованы гриды и флексы. Добавлена интерактивность при помощи JavaScript. Динамическое добавление элементов на страницу с использованием template. Можно редактировать имя и описание прямо на сайте. Можно добавлять/удалять фото с описанием, ставить лайки, менять описание страницы. Добавлена валидация форм с помощью JS. Применено ООП: созаны 2 класса: добавления новых карточек и валидации форм. JS-файл разбит на модули, данные экспортируются и импортируются между модулями.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RusKutuz/mesto.git"
+  },
+  "author": "Rustem Akhmetshin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RusKutuz/mesto/issues"
+  },
+  "homepage": "https://github.com/RusKutuz/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.5",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss-loader": "^6.2.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "core-js": "^3.21.1"
+  }
+}
