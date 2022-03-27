@@ -2,16 +2,17 @@ import {popupPicture,popupDescription, popupImage} from './data.js';
 
 /* карточки */
 export class Card {
-    constructor(data, templateSelector, openPopup) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._openPopup = openPopup;
+        this._handleCardClick = handleCardClick;
 
     }
     /* клонировать карточку из темплета */
     _getTemplate() {
         this._cardElement = document.querySelector(this._templateSelector).content.querySelector('.elements__element').cloneNode(true);
+        
     }
     /* навесить слушатели */
     _setEventListeners() {
@@ -20,7 +21,7 @@ export class Card {
         this._cardImage = this._cardElement.querySelector('.elements__picture');
         this._likeButton.addEventListener('click', () => this._likeActive());
         this._deleteButton.addEventListener('click', () => this._deleteCard());
-        this._cardImage.addEventListener('click', () => this._openPreviewPicture());
+        this._cardImage.addEventListener('click', () => this._handleCardClick());
     }
 
     /* закрасить сердечко Лайк черным при нажатии и обратно */
@@ -30,16 +31,11 @@ export class Card {
 
     /* удалить карточку */
     _deleteCard() {
+        console.log(this._cardElement);
         this._cardElement.remove();
     }
 
-    /* открыть попап с картинкой */
-    _openPreviewPicture() {
-        this._openPopup(popupPicture);
-        popupImage.src = this._link;
-        popupImage.alt = this._name;
-        popupDescription.textContent = this._name;
-    }
+    
 
     /* создать новую карточку */
     generateCard() {

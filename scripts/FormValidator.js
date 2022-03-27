@@ -79,7 +79,6 @@ export class FormValidator {
             this._hideError(error, input);
           }); 
 
-       
         if (!this._submitButton.classList.contains(this._settings.inactiveButtonClass)) {
             this._disableSubmitButton();
         }

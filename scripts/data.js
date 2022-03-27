@@ -35,7 +35,7 @@ export const popupEditProfileCloseButton = popupEditProfile.querySelector('.popu
 export const popupInputFieldName = popupEditProfile.querySelector('.popup__input_type_name');
 export const popupInputFieldProfession = popupEditProfile.querySelector('.popup__input_type_profession');
 
-export const cardsList = document.querySelector('.elements__grid');
+export const cardsContainer = document.querySelector('.elements__grid');
 
 export const addCardButton = document.querySelector('.profile__add-button');
 
