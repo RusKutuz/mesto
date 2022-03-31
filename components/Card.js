@@ -1,5 +1,3 @@
-import {popupPicture,popupDescription, popupImage} from './data.js';
-
 /* карточки */
 export class Card {
     constructor(data, templateSelector, handleCardClick) {
@@ -31,7 +29,6 @@ export class Card {
 
     /* удалить карточку */
     _deleteCard() {
-        console.log(this._cardElement);
         this._cardElement.remove();
     }
 
