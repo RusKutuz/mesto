@@ -15,16 +15,19 @@ import {
   addCardButton,
   popupInputFieldName,
   popupInputFieldProfession,
-} from '../components/data.js';
+} from '../utils/data.js';
 
 import '../pages/index.css'; // импорт главного файла стилей 
 
 const popupWithImage = new PopupWithImage('.popup_type_picture');
 popupWithImage.setEventListeners(); //Слушатели устанавливаются только один раз после создания экземпляра класса
+
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', submitFormEditProfile);
 popupEditProfile.setEventListeners();
+
 const popupAddCard = new PopupWithForm('.popup_type_add-card', submitAddCardForm);
 popupAddCard.setEventListeners();
+
 const userInformation = new UserInfo({userNameSelector: '.profile__header', userDescriptionSelector: '.profile__subscription'});
 
 
@@ -50,8 +53,6 @@ function submitAddCardForm(data) {
   popupAddCard.close();
 }
 
-
-
 /* открыть попап добавления карточки */
 function openPopupAddCard() {
   addCardFormValidation.resetForm();
@@ -59,15 +60,12 @@ function openPopupAddCard() {
   popupAddCard.open();
 }
 
-
-
 /* создать карточку */
 function createCard(data) {
   const card = new Card (data, ".template-card", () => {popupWithImage.open(data.link, data.name);});
   const cardElement = card.generateCard();
   return cardElement;
 }
-
 
 /* валидировать форму редактирования профиля */
 const editProfileFormValidation = new FormValidator(validationConfig, popupEditProfileForm);
@@ -77,15 +75,13 @@ editProfileFormValidation.enableValidation();
 const addCardFormValidation = new FormValidator(validationConfig, popupAddCardForm);
 addCardFormValidation.enableValidation();
 
-
-
 /* открыть попап редактирования профиля и заполнить инпуты значениями со страницы */
 function openPopupEditProfile() {
   editProfileFormValidation.resetForm();
-  editProfileFormValidation.toggleButtonState();
   const getInfo = userInformation.getUserInfo();
   popupInputFieldName.value = getInfo.userName;
   popupInputFieldProfession.value = getInfo.userDescription;
+  editProfileFormValidation.toggleButtonState();
   popupEditProfile.open();
 }
 
@@ -94,8 +90,6 @@ function submitFormEditProfile(data) {
   userInformation.setUserInfo(data);
   popupEditProfile.close();
 }
-
-
 
 addCardButton.addEventListener('click', openPopupAddCard);
 profileInfoEditButton.addEventListener('click', openPopupEditProfile);
