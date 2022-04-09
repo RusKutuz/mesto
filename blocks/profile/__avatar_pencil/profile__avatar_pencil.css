@@ -1,0 +1,17 @@
+.profile__avatar_pencil {
+    position: absolute;
+    background-color: transparent;
+    width: 26px;
+    height: 26px;
+    top: 47px;
+    left: 47px;
+    z-index: 0;
+    margin: auto;
+    opacity: 0;
+}
+
+.profile__avatar_pencil:hover {
+    opacity: .5;
+    transition: opacity .3s;
+    z-index: 0;
+}

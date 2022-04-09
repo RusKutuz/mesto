@@ -1,39 +1,22 @@
-export const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ]; 
-  
+ 
 export const profileInfoEditButton = document.querySelector('.profile__edit-button');
 export const profileHeader = document.querySelector('.profile__header');
 export const profileProfession = document.querySelector('.profile__subscription');
+export const profileAvatarLink = document.querySelector('.profile__avatar-link');
+export const profileAvatar = document.querySelector('.profile__avatar');
 
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 export const popupEditProfileCloseButton = popupEditProfile.querySelector('.popup__close-icon');
 export const popupInputFieldName = popupEditProfile.querySelector('.popup__input_type_name');
 export const popupInputFieldProfession = popupEditProfile.querySelector('.popup__input_type_profession');
+
+export const popupEditAvatar = document.querySelector('.popup_type_edit-avatar');
+export const popupEditAvatarForm = popupEditAvatar.querySelector('.popup__form');
+export const popupEditAvatarCloseButton = popupEditAvatar.querySelector('.popup__close-icon');
+export const popupInputFieldAvatar = popupEditAvatar.querySelector('.popup__input_type_avatar');
+
+
 
 export const cardsContainer = document.querySelector('.elements__grid');
 
@@ -62,3 +45,15 @@ export const validationConfig = {
   errorVisibleClass: 'popup__input-error_visible'
 };
 
+
+export const apiSettings = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/',
+  userInfoUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/users/me',
+  userAvatarUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/users/me/avatar',
+  LikesUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/cards/cardId/likes ',
+  cardsUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/cards',
+  headers: {
+    authorization: 'b551eaeb-19af-45c7-9088-803cc1768974',
+    'Content-Type': 'application/json'
+    },
+};

@@ -1,0 +1,7 @@
+.popup_type_delete-card > .popup__container {
+    height: 181px;
+}
+
+.popup_type_delete-card > .popup__container > .popup__header {
+    margin-bottom: 38px;
+}
