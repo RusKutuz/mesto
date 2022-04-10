@@ -19,8 +19,6 @@ import {
   profileAvatar,
   profileAvatarLink,
   popupEditAvatarForm,
-  popupEditAvatarCloseButton,
-  popupInputFieldAvatar,
 } from '../utils/data.js';
 
 import '../pages/index.css'; // импорт главного файла стилей 
@@ -48,15 +46,18 @@ const api = new Api(apiSettings);
 
 let userProfileId;
 
-/*запросить данные пользователя на сервере и добавить их на страницу*/
-api.getUserInfo()
-.then((res) => {
-  res.profession = res.about;
-  userInformation.setUserInfo(res);
-  profileAvatar.src = res.avatar;
-  userProfileId = res._id;
-});
 
+/*запросить данные пользователя на сервере и добавить их на страницу*/
+/*загрузить карточки с сервера и добавить на сайт*/
+Promise.all([api.getUserInfo(), api.getCards()])
+.then(([userData, cards]) => {
+  userData.profession = userData.about;
+  userInformation.setUserInfo(userData);
+  profileAvatar.src = userData.avatar;
+  userProfileId = userData._id;
+
+  renderInintialCards(cards);
+});
 
 
 
@@ -113,12 +114,6 @@ const renderInintialCards = (data) => {
 };
 
 
-/*загрузить карточки с сервера и добавить на сайт*/
-api.getCards()
-  .then((result) => {
-    renderInintialCards(result);
-  });
-  
 
   
 
