@@ -68,12 +68,11 @@ export class FormValidator {
         });
     }
 
-    
+
     /* очистить форму */
     resetForm() {
         const errors = this._form.querySelectorAll(this._settings.errorSelector);
         this._form.reset();
-        errors.forEach(error => error.textContent = "");
         this._inputList.forEach((input) => {
             const error = this._form.querySelector(`.error-${input.name}`);
             this._hideError(error, input);
@@ -83,7 +82,7 @@ export class FormValidator {
             this._disableSubmitButton();
         }
     }
-    
+
 
     enableValidation() {
         this._preventDefaultSubmit();

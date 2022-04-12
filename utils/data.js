@@ -1,15 +1,15 @@
  
 export const profileInfoEditButton = document.querySelector('.profile__edit-button');
 export const profileHeader = document.querySelector('.profile__header');
-export const profileProfession = document.querySelector('.profile__subscription');
-export const profileAvatarLink = document.querySelector('.profile__avatar-link');
+export const profileAbout = document.querySelector('.profile__subscription');
+export const profileAvatarContainer = document.querySelector('.profile__avatar-link');
 export const profileAvatar = document.querySelector('.profile__avatar');
 
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 export const popupEditProfileCloseButton = popupEditProfile.querySelector('.popup__close-icon');
 export const popupInputFieldName = popupEditProfile.querySelector('.popup__input_type_name');
-export const popupInputFieldProfession = popupEditProfile.querySelector('.popup__input_type_profession');
+export const popupInputFieldAbout = popupEditProfile.querySelector('.popup__input_type_about');
 
 export const popupEditAvatar = document.querySelector('.popup_type_edit-avatar');
 export const popupEditAvatarForm = popupEditAvatar.querySelector('.popup__form');
@@ -33,7 +33,7 @@ export const popupImage = popupPicture.querySelector('.popup__image');
 export const popupDescription = popupPicture.querySelector('.popup__description');
 export const popupPictureCloseButton = popupPicture.querySelector('.popup__close-icon');
 
-export const popups = document.querySelectorAll('.popup'); 
+export const popups = document.querySelectorAll('.popup');
 
 export const validationConfig = {
   formSelector: '.popup__form',
@@ -47,11 +47,7 @@ export const validationConfig = {
 
 
 export const apiSettings = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/',
-  userInfoUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/users/me',
-  userAvatarUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/users/me/avatar',
-  LikesUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/cards/cardId/likes ',
-  cardsUrl: 'https://mesto.nomoreparties.co/v1/cohort-39/cards',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39',
   headers: {
     authorization: 'b551eaeb-19af-45c7-9088-803cc1768974',
     'Content-Type': 'application/json'
