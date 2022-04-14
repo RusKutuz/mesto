@@ -1,63 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>Место</title>
-<!--   <link rel="stylesheet" href="pages/index.css"> --> 
-</head>
-<body class="body">
-  <div class="page">
+    <!--   <link rel="stylesheet" href="pages/index.css"> -->
+  </head>
+  <body class="body">
+    <div class="page">
+      <!-- Header section -->
+      <header class="header">
+        <img
+          class="header__logo"
+          src="<%=require('../images/Logo.svg')%>"
+          alt="карта россии"
+        />
+      </header>
 
-    <!-- Header section -->
-    <header class="header">
-      <img class="header__logo" src="<%=require('../images/Logo.svg')%>" alt="карта россии">
-    </header>
-     
-    <main class="content">
-
-      <!-- Profile section -->
-      <section class="profile">
-        <div class="profile__wrap">
-          <div class="profile__avatar-link"> 
-            <img class="profile__avatar" alt="аватар">
-          </div>
-          <div class="profile__info">
-            <div class="profile__header-wrap">
-              <h1 class="profile__header"></h1>
-              <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
+      <main class="content">
+        <!-- Profile section -->
+        <section class="profile">
+          <div class="profile__wrap">
+            <div class="profile__avatar-link">
+              <img class="profile__avatar" alt="аватар" />
             </div>
-            <p class="profile__subscription"></p>
-          </div>
-        </div>
-        <button type="button" class="profile__add-button" aria-label="Добавить"></button>
-      </section>
-
-      <!-- Elements section -->
-      <section class="elements">
-        <ul class="elements__grid">
-
-        </ul>
-      </section>
-
-      <template class="template-card">
-        <li class="elements__element">
-          <img class="elements__picture">
-          <div class="elements__subscription">
-            <h2 class="elements__name"></h2>
-            <div class="elements__like-box">
-              <button type="button" class="elements__like" aria-label="Лайк"></button>
-              <p class="elements__like-number"></p>
+            <div class="profile__info">
+              <div class="profile__header-wrap">
+                <h1 class="profile__header"></h1>
+                <button
+                  type="button"
+                  class="profile__edit-button"
+                  aria-label="Редактировать"
+                ></button>
+              </div>
+              <p class="profile__subscription"></p>
             </div>
-            
           </div>
-          <button class="elements__trash" type="button" aria-label="Корзина"></button> 
-        </li>
-      </template>
+          <button
+            type="button"
+            class="profile__add-button"
+            aria-label="Добавить"
+          ></button>
+        </section>
 
-    </main>
+        <!-- Elements section -->
+        <section class="elements">
+          <ul class="elements__grid"></ul>
+        </section>
+
+        <template class="template-card">
+          <li class="elements__element">
+            <img class="elements__picture" />
+            <div class="elements__subscription">
+              <h2 class="elements__name"></h2>
+              <div class="elements__like-box">
+                <button
+                  type="button"
+                  class="elements__like"
+                  aria-label="Лайк"
+                ></button>
+                <p class="elements__like-number"></p>
+              </div>
+            </div>
+            <button
+              class="elements__trash"
+              type="button"
+              aria-label="Корзина"
+            ></button>
+          </li>
+        </template>
+      </main>
 
       <!-- Footer section -->
       <footer class="footer">
@@ -68,16 +82,38 @@
       <div class="popup popup_type_edit-profile" tabindex="0">
         <div class="popup__container">
           <h2 class="popup__header">Редактировать профиль</h2>
-          <form class="popup__form popup__form_type_redact-form" name="redact-form" novalidate>
-            <input type="text" class="popup__input popup__input_type_name" name="name" placeholder="Имя" required="required" minlength="2" maxlength="40">
+          <form
+            class="popup__form popup__form_type_redact-form"
+            name="redact-form"
+            novalidate
+          >
+            <input
+              type="text"
+              class="popup__input popup__input_type_name"
+              name="name"
+              placeholder="Имя"
+              required="required"
+              minlength="2"
+              maxlength="40"
+            />
             <div class="popup__error-area">
               <span class="popup__input-error error-name"></span>
             </div>
-            <input type="text" class="popup__input popup__input_type_about" name="about" placeholder="О себе" required="required" minlength="2" maxlength="200">
+            <input
+              type="text"
+              class="popup__input popup__input_type_about"
+              name="about"
+              placeholder="О себе"
+              required="required"
+              minlength="2"
+              maxlength="200"
+            />
             <div class="popup__error-area">
               <span class="popup__input-error error-about"></span>
             </div>
-            <button type="submit" class="popup__submit-button">Сохранить</button>
+            <button type="submit" class="popup__submit-button">
+              Сохранить
+            </button>
           </form>
           <button type="button" class="popup__close-icon"></button>
         </div>
@@ -87,12 +123,24 @@
       <div class="popup popup_type_edit-avatar" tabindex="0">
         <div class="popup__container">
           <h2 class="popup__header">Обновить аватар</h2>
-          <form class="popup__form popup__form_type_redact-avatar" name="redact-avatar" novalidate>
-            <input type="url" class="popup__input popup__input_type_avatar" name="avatar" placeholder="Ссылка на картинку" required="required">
+          <form
+            class="popup__form popup__form_type_redact-avatar"
+            name="redact-avatar"
+            novalidate
+          >
+            <input
+              type="url"
+              class="popup__input popup__input_type_avatar"
+              name="avatar"
+              placeholder="Ссылка на картинку"
+              required="required"
+            />
             <div class="popup__error-area">
               <span class="popup__input-error error-avatar"></span>
             </div>
-            <button type="submit" class="popup__submit-button">Сохранить</button>
+            <button type="submit" class="popup__submit-button">
+              Сохранить
+            </button>
           </form>
           <button type="button" class="popup__close-icon"></button>
         </div>
@@ -102,16 +150,39 @@
       <div class="popup popup_type_add-card" tabindex="0">
         <div class="popup__container">
           <h2 class="popup__header">Новое место</h2>
-          <form class="popup__form popup__form_type_add-card" name="add-card" novalidate>
-            <input type="text" class="popup__input popup__input_type_place" name="place" placeholder="Название" required="required" minlength="2" maxlength="30">
+          <form
+            class="popup__form popup__form_type_add-card"
+            name="add-card"
+            novalidate
+          >
+            <input
+              type="text"
+              class="popup__input popup__input_type_place"
+              name="place"
+              placeholder="Название"
+              required="required"
+              minlength="2"
+              maxlength="30"
+            />
             <div class="popup__error-area">
               <span class="popup__input-error error-place"></span>
             </div>
-            <input type="url" class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" required="required">
+            <input
+              type="url"
+              class="popup__input popup__input_type_link"
+              name="link"
+              placeholder="Ссылка на картинку"
+              required="required"
+            />
             <div class="popup__error-area">
               <span class="popup__input-error error-link"></span>
             </div>
-            <button type="submit" class="popup__submit-button popup__submit-button_disabled">Создать</button>
+            <button
+              type="submit"
+              class="popup__submit-button popup__submit-button_disabled"
+            >
+              Создать
+            </button>
           </form>
           <button type="button" class="popup__close-icon"></button>
         </div>
@@ -122,22 +193,18 @@
         <div class="popup__container">
           <h2 class="popup__header">Вы уверены?</h2>
           <button type="button" class="popup__submit-button">Да</button>
-          <!-- <form class="popup__form popup__form_type_delete-card" name="delete-card" novalidate>
-            
-          </form> -->
           <button type="button" class="popup__close-icon"></button>
         </div>
       </div>
 
       <!-- Попап с увеличенной картинкой -->
-      <div class="popup popup_type_picture"  tabindex="0">
+      <div class="popup popup_type_picture" tabindex="0">
         <div class="popup__box">
-          <img class="popup__image">
+          <img class="popup__image" />
           <p class="popup__description"></p>
           <button type="button" class="popup__close-icon"></button>
         </div>
       </div>
-
-  </div>
-</body>
+    </div>
+  </body>
 </html>

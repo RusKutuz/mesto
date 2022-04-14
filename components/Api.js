@@ -9,10 +9,7 @@ export class Api {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject("server-error")))
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((res) => (res.ok ? res.json() : Promise.reject("server-error")));
   }
 
   /*сохранить на сервере отредактированные данные пользователя*/
@@ -28,16 +25,6 @@ export class Api {
     .then((res) => (res.ok ? res.json() : Promise.reject("server-error")));
   }
 
-  /*загрузка аватара с сервера*/
-  getAvatar() {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
-      headers: this.headers,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject("server-error")))
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   /*сохранить на сервере отредактированные данные пользователя*/
   setAvatar(data) {
@@ -98,3 +85,13 @@ export class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject("server-error")));
   }
 }
+
+
+  /*загрузка аватара с сервера
+  getAvatar() {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      headers: this.headers,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject("server-error")))
+  }
+*/

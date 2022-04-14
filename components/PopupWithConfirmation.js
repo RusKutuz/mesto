@@ -21,8 +21,4 @@ export class PopupWithConfirmation extends Popup {
   changeSubmitHandler(newSubmitHandler) {
     this._submitForm = newSubmitHandler;
   }
-
-  close() {
-    super.close();
-  }
 }

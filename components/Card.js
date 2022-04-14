@@ -72,10 +72,6 @@ export class Card {
     this._likeButton.classList.remove("elements__like_active");
   }
 
-  _openPopupDeleteCard() {
-    const popupDeleteCard = document.querySelector(".popup_type_delete-card");
-    popupDeleteCard.classList.add("popup_opened");
-  }
 
   /* удалить карточку */
   deleteCard() {
@@ -104,3 +100,11 @@ export class Card {
     return this._cardElement;
   }
 }
+
+
+
+ /* _openPopupDeleteCard() {
+    const popupDeleteCard = document.querySelector(".popup_type_delete-card");
+    popupDeleteCard.classList.add("popup_opened");
+  }
+*/
